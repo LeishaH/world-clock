@@ -5,9 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
     <title>World Clock - Leisha Henry</title>
+    <link rel="icon" href="🕰️" />
   </head>
   <body>
-    <h1>World Clock</h1>
+    <div class="container">
+      <h1>World Clock</h1>
+
+      <label for="city-select">Choose a city:</label>
+      <select id="city-select">
+        <option value="">Select a city...</option>
+        <option value="london">London</option>
+        <option value="new-york">New York</option>
+        <option value="auckland">Auckland</option>
+      </select>
+    </div>
+
+    <main>
+      <div class="city-block">
+        <h2>Sydney 🇦🇺</h2>
+        <div class="date">June 25th 2025</div>
+        <div class="time">9:28:15 AM</div>
+      </div>
+
+      <div class="city-block">
+        <h2>Los Angeles 🇺🇸</h2>
+        <div class="date">June 25th 2025</div>
+        <div class="time">9:28:15 AM</div>
+      </div>
+    </main>
 
     <footer>
       <p>
@@ -21,6 +46,7 @@
         </a>
       </p>
     </footer>
+
     <script src="javascript/index.js"></script>
   </body>
 </html>
