@@ -5,26 +5,105 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 600px;
+  margin: 2rem auto 3rem;
+  padding: 0 1rem;
+  text-align: center;
 }
 
 h1 {
   font-family: "Playfair Display", serif;
   color: #4b2e1a;
-  font-size: 2.5rem;
-  text-align: center;
-  margin: 2rem 0 1rem;
+  font-size: 2.8rem;
+  margin: 0 0 1rem;
   letter-spacing: 1px;
+}
+
+label {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-right: 0.5rem;
+}
+
+select#city-select {
+  font-size: 1rem;
+  padding: 0.3rem 0.6rem;
+  border: 2px solid #a67c52;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #2e1d13;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+select#city-select:hover,
+select#city-select:focus {
+  border-color: #d6a77a;
+  outline: none;
+}
+
+main {
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.city-block {
+  background-color: #fff9f0;
+  border: 2px solid #a67c52;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  box-shadow: 2px 4px 10px rgb(166 124 82 / 0.3);
+  width: 280px;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.city-block:hover {
+  box-shadow: 4px 6px 20px rgb(166 124 82 / 0.5);
+}
+
+.city-block h2 {
+  margin-top: 0;
+  font-family: "Playfair Display", serif;
+  font-size: 1.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.city-block .date {
+  font-weight: 600;
+  color: #7a5e3c;
+  margin-bottom: 0.6rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+.city-block .time {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #4b2e1a;
+  font-family: monospace, monospace;
 }
 
 footer {
   background-color: #2e1d13;
   color: #f4ecd8;
   text-align: center;
-  padding: 1rem 0;
+  padding: 1rem 1rem;
   font-size: 0.95rem;
   font-family: "Georgia", serif;
   border-top: 2px solid #a67c52;
-  margin-top: 2rem;
+  margin-top: auto;
   width: 100%;
 }
 
@@ -45,4 +124,20 @@ footer a {
 footer a:hover {
   color: #e3c598;
   text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .city-block {
+    width: 90%;
+    max-width: 400px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
 }
