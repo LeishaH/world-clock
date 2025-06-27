@@ -23,6 +23,65 @@ document.addEventListener("DOMContentLoaded", function () {
     laTimeElement.innerHTML =
       nowLA.format("h:mm:ss") + " <small>" + nowLA.format("A") + "</small>";
   }
+
+  let cityIntervalId;
+
+  function updateCity(event) {
+    let cityTimeZone = event.target.value;
+    console.log("City selected:", cityTimeZone);
+
+    let sydneyElement = document.querySelector("#sydney");
+    let laElement = document.querySelector("#los-angeles");
+
+    if (!cityTimeZone) {
+      clearInterval(cityIntervalId);
+      cityIntervalId = null;
+      document.querySelector("#selected-city-section").innerHTML = "";
+
+      sydneyElement.style.display = "block";
+      laElement.style.display = "block";
+      return;
+    }
+
+    sydneyElement.style.display = "none";
+    laElement.style.display = "none";
+
+    clearInterval(cityIntervalId);
+
+    function showCityTime() {
+      let cityTime = moment().tz(cityTimeZone);
+      let formattedDate = cityTime.format("MMMM Do YYYY");
+      let formattedTime =
+        cityTime.format("h:mm:ss") +
+        " <small>" +
+        cityTime.format("A") +
+        "</small>";
+
+      let selectedSection = document.querySelector("#selected-city-section");
+      selectedSection.innerHTML = "";
+
+      let customCityElement = document.createElement("div");
+      customCityElement.id = "custom-city";
+      customCityElement.classList.add("city-block");
+
+      let cityName = cityTimeZone.split("/")[1].replace("_", " ");
+
+      customCityElement.innerHTML = `
+        <h2>${cityName} 🌍</h2>
+        <div class="date">${formattedDate}</div>
+        <div class="time">${formattedTime}</div>
+      `;
+
+      selectedSection.appendChild(customCityElement);
+    }
+
+    showCityTime();
+    cityIntervalId = setInterval(showCityTime, 1000);
+  }
+
   updateTimes();
   setInterval(updateTimes, 1000);
+
+  let citiesSelectElement = document.querySelector("#city-select");
+  citiesSelectElement.addEventListener("change", updateCity);
 });
