@@ -28,7 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateCity(event) {
     let cityTimeZone = event.target.value;
-    console.log("City selected:", cityTimeZone);
+    if (cityTimeZone === "current") {
+      cityTimeZone = moment.tz.guess();
+    }
 
     let sydneyElement = document.querySelector("#sydney");
     let laElement = document.querySelector("#los-angeles");
